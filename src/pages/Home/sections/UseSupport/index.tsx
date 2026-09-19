@@ -12,7 +12,7 @@ import {
   AreasContent,
   AreasTextContent,
   ServicesGrid,
-} from './style';
+} from './styles';
 
 const services = [
   {

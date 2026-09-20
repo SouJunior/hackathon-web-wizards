@@ -21,7 +21,7 @@ export const FAQContainer = styled.section`
 `;
 
 export const SectionQuestionsTitle = styled.h2`
-  color: #1e47af;
+  color: ${colorPalette.thirdColor};
   font-size: 40px;
   text-align: center;
   margin-top: 70px;

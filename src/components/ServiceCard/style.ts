@@ -9,7 +9,7 @@ export const ServiceCardContainer = styled.article`
   padding: 24px 10px 18px 10px;
   border: 2px solid ${colorPalette.primaryColor};
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: ${colorPalette.contrastColor};
 
   @media (max-width: 431px) {
     min-height: 129px;
@@ -24,8 +24,8 @@ export const IconContainer = styled.div`
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  color: #3c7ef9;
-  background-color: #a9c4fd;
+  color: ${colorPalette.primaryColor};
+  background-color: ${colorPalette.backgroundColor};
   border-radius: 5px;
 `;
 
@@ -36,7 +36,7 @@ export const Content = styled.div`
 
   h3 {
     margin: 0;
-    color: ${colorPalette.titleColor};
+    color: ${colorPalette.thirdColor};
     font-size: 22px;
     font-weight: 600;
     line-height: 24px;

@@ -29,7 +29,7 @@ export function FAQ() {
   };
 
   return (
-    <FAQContainer>
+    <FAQContainer id="faq">
       <SectionTitle>Perguntas Frequentes</SectionTitle>
       <ParagraphFAQSection>Olá! Como podemos te ajudar?</ParagraphFAQSection>
 

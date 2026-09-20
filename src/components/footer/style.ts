@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const NavTitle = styled.span`
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
 export const FooterContainer = styled.footer`
   width: 76rem;
   display: grid;

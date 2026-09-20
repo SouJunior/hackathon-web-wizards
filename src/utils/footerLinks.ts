@@ -7,20 +7,22 @@ import twitchIcon from '@/assets/social/twitch.png';
 import xIcon from '@/assets/social/x.png';
 import youtubeIcon from '@/assets/social/youtube.png';
 
+export const footerLinksTitle = 'Conheça a SouJunior';
+
 export const footerLinks = [
-  { label: 'Conheça a SouJunior', to: '#' },
-  { label: 'Sobre Nós', to: '#' },
-  { label: 'Missão, Valores e Visão', to: '#' },
+  { label: 'Sobre Nós', to: 'https://www.soujunior.tech/sobre-nos' },
+  { label: 'Missão, Valores e Visão', to: 'https://www.soujunior.tech/missao' },
 ];
 
+export const footerLinks2Title = 'Fale Conosco';
+
 export const footerLinks2 = [
-  { label: 'Fale Conosco', to: '#' },
-  { label: 'FAQ', to: '#faq' },
-  { label: 'Ouvidoria', to: '#' },
+  { label: 'FAQ', to: 'https://www.soujunior.tech/faq' },
+  { label: 'Ouvidoria', to: 'https://www.soujunior.tech/ouvidoria' },
 ];
 
 export const footerLinks3 = [
-  { label: 'Faça Parte', to: 'https://stars.soujunior.tech/' },
+  { label: 'Faça Parte!', to: 'https://stars.soujunior.tech/' },
 ];
 
 export const socialLinks = [

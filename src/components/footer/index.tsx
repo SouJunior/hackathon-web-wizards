@@ -1,7 +1,7 @@
-import { Link as RouterLink } from 'react-router-dom';
 import {
   FooterContainer,
   Nav,
+  NavTitle,
   SocialList,
   Copyright,
   Logo,
@@ -14,7 +14,9 @@ import { Image } from '../common/image';
 import logoImage from '@/assets/sj-logo-footer.png';
 import {
   footerLinks,
+  footerLinksTitle,
   footerLinks2,
+  footerLinks2Title,
   footerLinks3,
   socialLinks,
   copyright,
@@ -32,65 +34,45 @@ export function Footer() {
     >
       <FooterContainer>
         <Logo>
-          <RouterLink to="/">
+          <a
+            href="https://www.soujunior.tech/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               src={logoImage}
               alt="Sou Junior - Logo da organização que impulsiona carreiras em tecnologia"
               role="img"
             />
-          </RouterLink>
+          </a>
         </Logo>
         <NavContainer>
           <ContentWrapper>
             <Nav>
-              {footerLinks.map((link, index) => {
-                const isFirst = index === 0;
+              <NavTitle>{footerLinksTitle}</NavTitle>
+              {footerLinks.map((link) => {
                 return (
-                  <Link
-                    key={link.label}
-                    to={link.to}
-                    color="#fff"
-                    size={index === 0 ? 24 : 16}
-                    isFirstLink={isFirst}
-                  >
+                  <Link key={link.label} to={link.to} color="#fff" size={16}>
                     {link.label}
                   </Link>
                 );
               })}
             </Nav>
             <Nav>
-              {footerLinks2 &&
-                footerLinks2.map((link, index) => {
-                  const isFirst = index === 0;
-                  return (
-                    <Link
-                      key={link.label}
-                      to={link.to}
-                      color="#fff"
-                      size={index === 0 ? 24 : 16}
-                      isFirstLink={isFirst}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
+              <NavTitle>{footerLinks2Title}</NavTitle>
+              {footerLinks2.map((link) => (
+                <Link key={link.label} to={link.to} color="#fff" size={16}>
+                  {link.label}
+                </Link>
+              ))}
             </Nav>
             <Nav>
               {footerLinks3 &&
-                footerLinks3.map((link, index) => {
-                  const isFirst = index === 0;
-                  return (
-                    <Link
-                      key={link.label}
-                      to={link.to}
-                      color="#fff"
-                      size={index === 0 ? 24 : 16}
-                      isFirstLink={isFirst}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
+                footerLinks3.map((link) => (
+                  <Link key={link.label} to={link.to} button>
+                    {link.label}
+                  </Link>
+                ))}
             </Nav>
           </ContentWrapper>
         </NavContainer>

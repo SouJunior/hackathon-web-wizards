@@ -97,13 +97,7 @@ export function Footer() {
         {socialLinks && (
           <SocialList>
             {socialLinks.map((social) => (
-              <Link
-                key={social.to}
-                to={social.to}
-                img={true}
-                width={24}
-                height={24}
-              >
+              <Link key={social.to} to={social.to} img alt={social.label}>
                 {social.icon}
               </Link>
             ))}

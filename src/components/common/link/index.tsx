@@ -9,8 +9,7 @@ interface LinkProps {
   size?: number;
   isFirstLink?: boolean;
   img?: boolean;
-  width?: number;
-  height?: number;
+  alt?: string;
 }
 
 export function Link({
@@ -19,10 +18,30 @@ export function Link({
   size,
   isFirstLink,
   img,
-  width,
-  height,
+  alt,
   children,
 }: LinkProps) {
+  const content = img ? (
+    <img src={children as string} alt={alt} width={24} height={24} />
+  ) : (
+    children
+  );
+
+  if (to.startsWith('http')) {
+    return (
+      <StyledLink
+        href={to}
+        target="_blank"
+        rel="noopener noreferrer"
+        $color={color}
+        $size={size}
+        $isFirstLink={isFirstLink}
+      >
+        {content}
+      </StyledLink>
+    );
+  }
+
   return (
     <StyledLink
       as={RouterLink}
@@ -30,11 +49,8 @@ export function Link({
       $color={color}
       $size={size}
       $isFirstLink={isFirstLink}
-      $img={img}
-      $width={width}
-      $height={height}
     >
-      {children}
+      {content}
     </StyledLink>
   );
 }

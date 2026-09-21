@@ -77,7 +77,11 @@ export function FAQ() {
 
         <LinkContainer>
           <ParagraphFAQSection>Não encontrou a sua dúvida?</ParagraphFAQSection>
-          <DoubtButton href="/FAQ" target="_blank" rel="noopener noreferrer">
+          <DoubtButton
+            href="https://www.soujunior.tech/faq"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Pergunte Aqui!
           </DoubtButton>
         </LinkContainer>

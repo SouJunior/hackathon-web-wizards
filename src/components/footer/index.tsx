@@ -18,6 +18,7 @@ import {
   footerLinks2,
   footerLinks2Title,
   footerLinks3,
+  footerLinks3Title,
   socialLinks,
   copyright,
 } from '@/utils/footerLinks';
@@ -67,12 +68,12 @@ export function Footer() {
               ))}
             </Nav>
             <Nav>
-              {footerLinks3 &&
-                footerLinks3.map((link) => (
-                  <Link key={link.label} to={link.to} button>
-                    {link.label}
-                  </Link>
-                ))}
+              <NavTitle>{footerLinks3Title}</NavTitle>
+              {footerLinks3.map((link) => (
+                <Link key={link.label} to={link.to} color="#fff" size={16}>
+                  {link.label}
+                </Link>
+              ))}
             </Nav>
           </ContentWrapper>
         </NavContainer>

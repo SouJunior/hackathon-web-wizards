@@ -10,7 +10,6 @@ interface LinkProps {
   isFirstLink?: boolean;
   img?: boolean;
   alt?: string;
-  button?: boolean;
 }
 
 export function Link({
@@ -20,7 +19,6 @@ export function Link({
   isFirstLink,
   img,
   alt,
-  button,
   children,
 }: LinkProps) {
   const content = img ? (
@@ -38,7 +36,6 @@ export function Link({
         $color={color}
         $size={size}
         $isFirstLink={isFirstLink}
-        $button={button}
       >
         {content}
       </StyledLink>
@@ -52,7 +49,6 @@ export function Link({
       $color={color}
       $size={size}
       $isFirstLink={isFirstLink}
-      $button={button}
     >
       {content}
     </StyledLink>

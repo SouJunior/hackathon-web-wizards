@@ -24,8 +24,8 @@ export const footerLinks2 = [
 export const footerLinks3Title = 'Faça Parte';
 
 export const footerLinks3 = [
-  { label: 'Apoiador', to: '#' },
-  { label: 'Voluntário', to: '#' },
+  { label: 'Voluntário', to: 'https://stars.soujunior.tech/' },
+  { label: 'Apoiador', to: 'https://apoia.se/soujunior' },
 ];
 
 export const socialLinks = [

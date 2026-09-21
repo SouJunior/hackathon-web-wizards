@@ -5,6 +5,8 @@ interface ButtonProps {
   children: React.ReactNode;
   $contrast?: boolean;
   $hideMobile?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 export function Button({
@@ -12,9 +14,17 @@ export function Button({
   children,
   $contrast = false,
   $hideMobile = false,
+  target,
+  rel,
 }: ButtonProps) {
   return (
-    <StyledButton to={to} $contrast={$contrast} $hideMobile={$hideMobile}>
+    <StyledButton
+      to={to}
+      $contrast={$contrast}
+      $hideMobile={$hideMobile}
+      target={target}
+      rel={rel}
+    >
       {children}
     </StyledButton>
   );

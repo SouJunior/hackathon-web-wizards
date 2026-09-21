@@ -34,10 +34,20 @@ export function Hero() {
           </ContrastParagraph>
         </HeroTextContent>
         <ButtonContainer>
-          <Button to="/" $contrast>
+          <Button
+            to="https://apoia.se/soujunior"
+            target="_blank"
+            rel="noopener noreferrer"
+            $contrast
+          >
             Quero Apoiar!
           </Button>
-          <Button to="/" $hideMobile>
+          <Button
+            to="https://www.soujunior.tech/sobre-nos"
+            target="_blank"
+            rel="noopener noreferrer"
+            $hideMobile
+          >
             Conheça o projeto!
           </Button>
         </ButtonContainer>

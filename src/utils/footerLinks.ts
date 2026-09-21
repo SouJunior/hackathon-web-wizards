@@ -21,8 +21,11 @@ export const footerLinks2 = [
   { label: 'Ouvidoria', to: 'https://www.soujunior.tech/ouvidoria' },
 ];
 
+export const footerLinks3Title = 'Faça Parte';
+
 export const footerLinks3 = [
-  { label: 'Faça Parte!', to: 'https://stars.soujunior.tech/' },
+  { label: 'Voluntário', to: 'https://stars.soujunior.tech/' },
+  { label: 'Apoiador', to: 'https://apoia.se/soujunior' },
 ];
 
 export const socialLinks = [

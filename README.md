@@ -2,6 +2,18 @@
 
 Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site principal (V1), criada para concentrar a jornada de doação/apoio em um único fluxo, com header e footer que redirecionam de volta para as páginas e seções relevantes do site oficial.
 
+## Sumário
+
+- [Stack](#stack)
+- [Pré-requisitos](#pré-requisitos)
+- [Rodando o projeto](#rodando-o-projeto)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Fluxo da página](#fluxo-da-página)
+- [Links externos (site V1)](#links-externos-site-v1)
+- [Acessibilidade](#acessibilidade)
+- [Padrões do projeto](#padrões-do-projeto)
+- [Como contribuir](#como-contribuir)
+
 ## Stack
 
 - [React 19](https://react.dev/)
@@ -89,9 +101,37 @@ O header e o footer não navegam dentro dessa página, eles direcionam de volta 
 
 Os destinos exatos de cada link vivem em `src/utils/headerLinks.ts` e `src/utils/footerLinks.ts`, centralizados para facilitar atualização quando o site V1 mudar de estrutura.
 
+## Acessibilidade
+
+Não é uma implementação completa de WCAG, mas o header e o footer seguem o básico:
+
+- `aria-label` na navegação principal (`<nav>`) e no botão de menu mobile, com `aria-expanded` refletindo o estado aberto/fechado.
+- `alt` descritivo nas imagens (logo, ícones sociais).
+- Logo com `role="img"` quando é um wrapper de link em volta da imagem.
+- Links externos com `rel="noopener noreferrer"`, evitando que a nova aba tenha acesso à página de origem via `window.opener`.
+
 ## Padrões do projeto
 
 - Components exportados de forma nomeada (`export function X`), sem `export default`.
 - Arquivo de estilo por component: `style.ts` (styled-components).
 - Link externo (`http...`) sempre com `target="_blank" rel="noopener noreferrer"`; link interno usa `react-router-dom`.
 - Hooks de commit (Husky + lint-staged) rodam Prettier e ESLint automaticamente em cada commit.
+
+## Como contribuir
+
+```bash
+# 1. Crie uma branch a partir da main
+git checkout -b feat/nome-da-mudanca
+
+# 2. Faça suas alterações e valide localmente
+yarn lint
+yarn build
+
+# 3. Commit seguindo Conventional Commits
+git commit -m "feat: adiciona nova seção X"
+
+# 4. Suba a branch e abra um Pull Request para a main
+git push -u origin feat/nome-da-mudanca
+```
+
+Tipos de commit usados no projeto: `feat`, `fix`, `chore`, `docs`. O pre-commit hook (Husky) já roda Prettier e ESLint automaticamente, não precisa formatar na mão.

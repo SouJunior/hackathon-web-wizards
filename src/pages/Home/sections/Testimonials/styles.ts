@@ -111,9 +111,24 @@ export const TextCard = styled(Card)`
   text-align: center;
 `;
 
+export const CardHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+`;
+
+export const NameRole = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Avatar = styled.div<{ $photo?: string }>`
-  width: 68px;
-  height: 68px;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: ${({ $photo }) =>
     $photo ? `url(${$photo}) center / cover` : colorPalette.secondaryColor};
@@ -123,7 +138,6 @@ export const Avatar = styled.div<{ $photo?: string }>`
   justify-content: center;
   color: ${colorPalette.thirdColor};
   font-weight: 700;
-  margin-bottom: 0.75rem;
 `;
 
 export const Name = styled.p`

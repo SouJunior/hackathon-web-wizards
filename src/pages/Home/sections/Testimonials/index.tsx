@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   TestimonialsSection,
   Title,
@@ -6,6 +6,8 @@ import {
   NavButton,
   CardsRow,
   TextCard,
+  CardHeader,
+  NameRole,
   Avatar,
   Name,
   Role,
@@ -31,6 +33,8 @@ export function Testimonials() {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({});
+  const isNavigatingRef = useRef(false);
+  const navigateTimeoutRef = useRef<number | undefined>(undefined);
 
   function stopPlaying() {
     if (playingIndex !== null) {
@@ -46,6 +50,11 @@ export function Testimonials() {
     const clamped = Math.max(0, Math.min(nextPage, totalPages - 1));
     const card = row.children[clamped * CARDS_PER_PAGE] as HTMLElement;
     if (card) {
+      isNavigatingRef.current = true;
+      window.clearTimeout(navigateTimeoutRef.current);
+      navigateTimeoutRef.current = window.setTimeout(() => {
+        isNavigatingRef.current = false;
+      }, 600);
       row.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
     }
     setPage(clamped);
@@ -53,6 +62,8 @@ export function Testimonials() {
   }
 
   function handleScroll() {
+    if (isNavigatingRef.current) return;
+
     const row = rowRef.current;
     if (!row) return;
 
@@ -60,6 +71,23 @@ export function Testimonials() {
     const index = Math.round(row.scrollLeft / cardWidth);
     setPage(Math.min(totalPages - 1, Math.floor(index / CARDS_PER_PAGE)));
   }
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        target?.tagName === 'INPUT' ||
+        target?.tagName === 'TEXTAREA' ||
+        target?.isContentEditable;
+      if (isTyping) return;
+
+      if (e.key === 'ArrowRight') goTo(page + 1);
+      if (e.key === 'ArrowLeft') goTo(page - 1);
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [page]);
 
   function toggleVideo(index: number) {
     const video = videoRefs.current[index];
@@ -100,7 +128,8 @@ export function Testimonials() {
                   ref={(el) => {
                     videoRefs.current[index] = el;
                   }}
-                  src={testimonial.videoSrc}
+                  src={testimonial.videoSrc || undefined}
+                  poster={testimonial.poster}
                   playsInline
                   onEnded={() => setPlayingIndex(null)}
                 />
@@ -118,9 +147,13 @@ export function Testimonials() {
               </VideoCard>
             ) : (
               <TextCard key={testimonial.name}>
-                <Avatar $photo={testimonial.photo} />
-                <Name>{testimonial.name}</Name>
-                <Role>{testimonial.role}</Role>
+                <CardHeader>
+                  <Avatar $photo={testimonial.photo} />
+                  <NameRole>
+                    <Name>{testimonial.name}</Name>
+                    <Role>{testimonial.role}</Role>
+                  </NameRole>
+                </CardHeader>
                 <Quote>&ldquo;{testimonial.quote}&rdquo;</Quote>
                 <Stars>{'★'.repeat(testimonial.rating)}</Stars>
               </TextCard>

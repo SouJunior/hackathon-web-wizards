@@ -106,6 +106,14 @@ export const DoubtButton = styled.a`
   }
 `;
 
+export const AnswerLink = styled.a`
+  font-size: inherit;
+  font-family: inherit;
+  color: ${colorPalette.primaryColor};
+  font-weight: 700;
+  text-decoration: none;
+`;
+
 export const QuestionContainer = styled.div`
   display: flex;
   justify-content: space-between;

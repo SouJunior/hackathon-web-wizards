@@ -9,6 +9,7 @@ import {
   QuestionsAndAnswersContainer,
   ParagraphFAQSection,
   DoubtButton,
+  AnswerLink,
   QuestionContainer,
   Questions,
   Answers,
@@ -69,7 +70,21 @@ export function FAQ() {
               </QuestionContainer>
 
               {openResponse.includes(item.id) && (
-                <Answers>{item.answer}</Answers>
+                <Answers>
+                  {item.answer}
+                  {item.linkUrl && (
+                    <>
+                      {' '}
+                      <AnswerLink
+                        href={item.linkUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.linkLabel}
+                      </AnswerLink>
+                    </>
+                  )}
+                </Answers>
               )}
             </QuestionsAndAnswers>
           ))}

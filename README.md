@@ -10,6 +10,7 @@ Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site pr
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Fluxo da página](#fluxo-da-página)
 - [Links externos (site V1)](#links-externos-site-v1)
+- [Vídeo de depoimento (hospedagem externa)](#vídeo-de-depoimento-hospedagem-externa)
 - [Acessibilidade](#acessibilidade)
 - [Padrões do projeto](#padrões-do-projeto)
 - [Como contribuir](#como-contribuir)
@@ -119,6 +120,19 @@ O header e o footer não navegam dentro dessa página, eles direcionam de volta 
 - Redes sociais do footer → perfis oficiais da SouJunior (nova aba).
 
 Os destinos exatos de cada link vivem em `src/utils/headerLinks.ts` e `src/utils/footerLinks.ts`, centralizados para facilitar atualização quando o site V1 mudar de estrutura.
+
+## Vídeo de depoimento (hospedagem externa)
+
+O vídeo do depoimento em vídeo (seção Testimonials) não fica no repositório. O
+arquivo original tinha 118MB (acima do limite de 100MB do GitHub), foi
+comprimido para ~21MB e depois movido para o Supabase Storage, referenciado
+só por URL em `src/pages/Home/sections/Testimonials/TestimonialsData.ts`
+(campo `videoSrc`).
+
+⚠️ A URL atual é **assinada** (contém um token com expiração em 2028), não é
+um link público permanente. Antes de virar produção de verdade, trocar o
+bucket do Supabase para **público** e atualizar `videoSrc` para a URL sem
+token — assim o link para de depender de renovação futura.
 
 ## Acessibilidade
 

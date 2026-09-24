@@ -30,14 +30,14 @@ export function Results() {
       </ResultTextContent>
       <ResultContent>
         <Logo>
-          <img src={Porto} alt="Mascote da SouJunior" />
-          <img src={Hitss} alt="Mascote da SouJunior" />
-          <img src={Icon} alt="Mascote da SouJunior" />
-          <img src={IBM} alt="Mascote da SouJunior" />
-          <img src={Deloitte} alt="Mascote da SouJunior" />
-          <img src={NTT} alt="Mascote da SouJunior" />
-          <img src={Athena} alt="Mascote da SouJunior" />
-          <img src={BTG} alt="Mascote da SouJunior" />
+          <img src={Porto} alt="Logo da empresa Porto" />
+          <img src={Hitss} alt="Logo da empresa HITSS" />
+          <img src={Icon} alt="Logo da empresa Icon Solutions" />
+          <img src={IBM} alt="Logo da empresa IBM" />
+          <img src={Deloitte} alt="Logo da empresa Deloitte." />
+          <img src={NTT} alt="Logo da empresa NTT Data" />
+          <img src={Athena} alt="Logo da empresa Athena Saúde" />
+          <img src={BTG} alt="Logo da empresa BTG Pactual" />
         </Logo>
       </ResultContent>
     </ResultsContainer>

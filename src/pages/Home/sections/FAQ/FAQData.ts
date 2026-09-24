@@ -7,27 +7,26 @@ export interface QuestionsAndAnswersItem {
 export const QUESTIONS_AND_ANSWERS: QuestionsAndAnswersItem[] = [
   {
     id: 1,
-    question: 'Qual o objetivo do SouJunior?',
+    question: 'Por que eu deveria apoiar a SouJunior?',
     answer:
-      'A SouJunior tem como missão apoiar e preparar profissionais juniores para o mercado de tecnologia por meio do voluntariado, promovendo aprendizado, conexão e desenvolvimento na prática.',
+      'Seu apoio ajuda a criar oportunidades para profissionais que estão entrando no mercado de trabalho, contribuindo para capacitação, infraestrutura e projetos que aproximam talentos de suas primeiras experiências profissionais. Cada contribuição ajuda a transformar potencial em oportunidade.',
   },
   {
     id: 2,
-    question: 'Como posso participar da Comunidade SouJunior?',
+    question: 'De que outra forma eu posso apoiar a SouJunior?',
     answer:
-      'Você pode entrar na nossa comunidade acessando o servidor do SouJunior no Discord e no GitHub. Para se tornar membro oficialmente, é só ir no menu "Nossas Iniciativas" no site, clicar em "Conheça outras iniciativas" e preencher o formulário de candidatura. Depois disso, nosso time entra em contato com você!',
+      'Além da contribuição financeira, você pode apoiar divulgando a SouJunior, indicando talentos e empresas parceiras ou compartilhando oportunidades que fortaleçam nossa comunidade.',
   },
   {
     id: 3,
-    question: 'A SouJunior oferece ajuda de custo para voluntários?',
+    question: 'Como o meu apoio ajuda profissionais que estão começando?',
     answer:
-      'Não. Todas as atividades no SouJunior são voluntárias e realizadas de forma remota (home office).',
+      'Seu apoio contribui para oferecer capacitação, mentorias e experiências práticas, preparando novos profissionais para ingressarem no mercado com mais confiança e qualificação.',
   },
   {
     id: 4,
-    question:
-      'A SouJunior ajuda os juniores a entrarem no mercado de trabalho?',
+    question: 'Quem são as pessoas beneficiadas pelo projeto?',
     answer:
-      'Sim. A SouJunior contribui para a inserção de profissionais juniores no mercado de trabalho ao promover o desenvolvimento de competências técnicas e comportamentais por meio de vivências práticas em um ambiente colaborativo. Nossa atuação é focada na formação integral do júnior, incentivando o protagonismo, a responsabilidade e a construção de repertório profissional relevante para os desafios do início de carreira.',
+      'A SouJunior beneficia estudantes, recém-formados e pessoas em transição de carreira que buscam adquirir experiência prática e conquistar sua primeira oportunidade profissional.',
   },
 ];

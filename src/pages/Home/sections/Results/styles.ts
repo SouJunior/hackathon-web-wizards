@@ -14,8 +14,9 @@ export const ResultsContainer = styled.section`
   background-color: ${colorPalette.secondaryColor};
 
   @media (max-width: 431px) {
-    width: 430px;
-    height: 534px;
+    width: 100%;
+    height: auto;
+    padding: 32px 0 48px;
   }
 `;
 
@@ -67,9 +68,12 @@ export const Logo = styled.div`
   }
 
   @media (max-width: 431px) {
-    grid-template-columns: repeat(3, 110px);
+    width: 100%;
+    max-width: 100%;
+    padding: 0 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     height: auto;
-    gap: 24px;
+    gap: 24px 16px;
 
     img {
       width: 100%;

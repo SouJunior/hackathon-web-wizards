@@ -6,6 +6,7 @@ import databaseIcon from '@/assets/icons/databaseIcon.svg';
 import cloudIcon from '@/assets/icons/cloudIcon.svg';
 import domainIcon from '@/assets/icons/globeIcon.svg';
 import eventsIcon from '@/assets/icons/tvIcon.svg';
+import megaphone from '@/assets/icons/megaphone.svg';
 
 import {
   AreasContainer,
@@ -44,7 +45,7 @@ const services = [
       'Ferramentas de streaming, licenças e transmissão para capacitação.',
   },
   {
-    icon: infraIcon,
+    icon: megaphone,
     title: 'Marketing Digital',
     description:
       'Planejamento e execução de campanhas online para maximizar alcance e engajamento.',

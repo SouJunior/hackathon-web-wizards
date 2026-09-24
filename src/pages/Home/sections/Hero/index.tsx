@@ -2,6 +2,7 @@ import { ContrastParagraph } from '@/styles/global';
 
 import {
   HeroTitle,
+  HeroCall,
   HeroContainer,
   AreasContent,
   HeroTextContent,
@@ -27,10 +28,11 @@ export function Hero() {
           <img src={Design} alt="" />
         </DesignRight>
         <HeroTextContent>
-          <HeroTitle>Mais de 50% das vagas pedem experiência!</HeroTitle>
+          <HeroCall>DOE R$ 2,00 E FAÇA PARTE DESSA MUDANÇA.</HeroCall>
+          <HeroTitle>Como ter experiência sem oportunidade?</HeroTitle>
           <ContrastParagraph>
-            A SouJunior capacita talentos com experiências reais, preparando
-            profissionais para entrar no mercado com confiança.
+            A falta de experiência é a maior obstáculo para 42,8% das pessoas. A
+            SouJunior elimina essa barreira e oferece vivência real de mercado.
           </ContrastParagraph>
         </HeroTextContent>
         <ButtonContainer>

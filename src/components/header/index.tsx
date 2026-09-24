@@ -61,7 +61,11 @@ export function Header() {
       {menuOpen && (
         <MobileMenu aria-label="Navegação principal">
           {headerLinks.map((link) => (
-            <NavLink key={link.label} href={link.to}>
+            <NavLink
+              key={link.label}
+              href={link.to}
+              onClick={() => setMenuOpen(false)}
+            >
               {link.label}
             </NavLink>
           ))}
@@ -69,6 +73,7 @@ export function Header() {
             href={supportUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
           >
             Seja um Apoiador!
           </SupportButton>

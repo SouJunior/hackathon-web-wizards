@@ -12,13 +12,38 @@ export const HeroTitle = styled.h1`
 
   @media (max-width: 431px) {
     text-align: start;
+    margin-bottom: 32px;
+  }
+`;
+
+export const HeroCall = styled.h1`
+  color: ${colorPalette.contrastColor};
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 196%;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Funnel Sans', sans-serif;
+  background-color: color-mix(
+    in srgb,
+    ${colorPalette.contrastColor} 10%,
+    transparent
+  );
+
+  @media (max-width: 431px) {
+    text-align: start;
+    margin-bottom: 32px;
   }
 `;
 
 export const HeroContainer = styled.section`
   display: flex;
-  height: 887px;
+  height: 1005px;
   max-width: 100%;
+  overflow-x: clip;
   background: linear-gradient(
     to right,
     ${colorPalette.primaryColor} 0%,
@@ -27,7 +52,7 @@ export const HeroContainer = styled.section`
   border-radius: 0 0 80px 80px;
 
   @media (max-width: 431px) {
-    height: 589px;
+    height: 750px;
     border-radius: 0 0 20px 20px;
   }
 `;
@@ -39,12 +64,11 @@ export const AreasContent = styled.div`
   width: 100%;
   padding-top: 96px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 
   @media (max-width: 431px) {
     width: 100%;
     max-width: 100%;
-    padding-top: 64px;
   }
 `;
 
@@ -56,9 +80,10 @@ export const HeroTextContent = styled.div`
   margin-bottom: 56px;
 
   @media (max-width: 431px) {
-    max-width: 382px;
+    max-width: 347px;
     margin-bottom: 17px;
     text-align: start;
+    align-items: flex-start;
   }
 `;
 
@@ -71,7 +96,7 @@ export const ButtonContainer = styled.div`
       display: none;
     }
     position: relative;
-    top: 220px;
+    top: 240px;
   }
 `;
 
@@ -80,13 +105,13 @@ export const HeroMascote = styled.div`
   bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 999;
 
   @media (max-width: 431px) {
     img {
       width: 419px;
     }
-    bottom: 90px;
+    bottom: 103px;
     right: -222px;
   }
 `;

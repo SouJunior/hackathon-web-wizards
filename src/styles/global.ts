@@ -34,11 +34,11 @@ export const SectionTitle = styled.h1`
 
 export const SectionParagraph = styled.p`
   color: ${colorPalette.paragraphColor};
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
-  text-align: start;
+  text-align: center;
   font-family: 'Funnel Sans', sans-serif;
-  line-height: 150%;
+  line-height: 175%;
   letter-spacing: 0.15px;
 
   @media (max-width: 431px) {

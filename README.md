@@ -21,6 +21,7 @@ Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site pr
 - [Vite](https://vite.dev/) (dev server e build)
 - [styled-components](https://styled-components.com/) (estilização)
 - [react-router-dom](https://reactrouter.com/) (roteamento interno, usado pelo `BrowserRouter` e pelos links de âncora dentro da própria página)
+- [typeit-react](https://www.npmjs.com/package/typeit-react) (animação de texto digitado na seção BigNumbers)
 
 ## Pré-requisitos
 
@@ -55,25 +56,32 @@ src/
 ├── components/
 │   ├── header/               # Header sticky, links do menu e CTA "Seja um Apoiador"
 │   ├── footer/                # Footer com navegação em 3 colunas e redes sociais
+│   ├── FloatingSupport/        # Botão flutuante (desktop) / faixa fixa (mobile) de apoio
 │   ├── common/
 │   │   ├── link/               # Link único: detecta externo (http) vs interno e trata target/rel
 │   │   └── image/               # Wrapper de <img>
-│   ├── ServiceCard/           # Card usado na seção de serviços/áreas de apoio
-│   └── Button/                 # Botão de CTA usado na Hero
+│   ├── ServiceCard/           # Card usado na seção "Para onde vai o seu apoio?"
+│   ├── ChallengeCard/          # Card usado na seção "Desafios do Mercado"
+│   └── Button/                 # Botão de CTA usado na Hero/CTA
 ├── pages/
 │   └── Home/
-│       ├── index.tsx            # Composição da página: Header, Hero, UseSupport, FAQ, Footer
+│       ├── index.tsx            # Composição da página, ordem das seções abaixo
 │       └── sections/
 │           ├── Hero/              # Seção de abertura
-│           ├── UseSupport/         # Áreas em que a SouJunior atua
-│           └── FAQ/                 # Perguntas frequentes (âncora #faq)
+│           ├── MarketChallenges/   # "Hoje o mercado enfrenta dois desafios" (id market-challenges)
+│           ├── BigNumbers/          # Números/animação de áreas que migraram pra tech
+│           ├── Results/              # Estatísticas de voluntários
+│           ├── Testimonials/          # Depoimentos, carrossel com vídeo (âncora #depoimentos)
+│           ├── UseSupport/             # "Para onde vai o seu apoio?"
+│           ├── CTA/                     # "Doe R$ 2,00" (id cta)
+│           └── FAQ/                      # Perguntas frequentes (âncora #faq)
 ├── utils/
 │   ├── headerLinks.ts         # Dados dos links do header + URL de apoio
 │   └── footerLinks.ts          # Dados das 3 colunas do footer + redes sociais
 ├── styles/
 │   ├── colorPalette.ts         # Paleta de cores compartilhada
 │   └── global.ts                # Estilos globais e tipografia base
-└── assets/                    # Logos, ícones sociais, ilustrações
+└── assets/                    # Logos, ícones sociais, fotos de depoimentos, ilustrações
 ```
 
 ## Fluxo da página
@@ -81,15 +89,26 @@ src/
 ```mermaid
 flowchart TD
     A[Header sticky] --> B[Hero]
-    B --> C[UseSupport]
-    C --> D[FAQ]
-    D --> E[Footer]
+    B --> C[MarketChallenges]
+    C --> D[BigNumbers]
+    D --> E[Results]
+    E --> F[Testimonials]
+    F --> G[UseSupport]
+    G --> H[CTA]
+    H --> I[FAQ]
+    I --> J[Footer]
 
-    A -- "logo, Sobre Nós, Notícias e Eventos, Faça Parte" --> V1[soujunior.tech · Site V1]
+    FAB[FloatingSupport] -. "visível entre Hero e CTA" .-> H
+
+    A -- "logo, Sobre Nós, Depoimentos, Faça Parte" --> V1[soujunior.tech · Site V1]
     A -- "Seja um Apoiador! (nova aba)" --> APOIA[apoia.se/soujunior]
-    E -- "3 colunas de navegação, logo, redes sociais" --> V1
-    D -- "FAQ (âncora #faq)" --> D
+    FAB -- "botão/faixa (nova aba)" --> APOIA
+    J -- "3 colunas de navegação, logo, redes sociais" --> V1
+    F -- "Depoimentos (âncora #depoimentos)" --> F
+    I -- "FAQ (âncora #faq)" --> I
 ```
+
+`FloatingSupport` acompanha o scroll: aparece perto do fim da Hero e some ao alcançar o CTA, tanto descendo quanto subindo a página. No desktop é um botão circular flutuante; no mobile, uma faixa fixa no rodapé da tela.
 
 ## Links externos (site V1)
 

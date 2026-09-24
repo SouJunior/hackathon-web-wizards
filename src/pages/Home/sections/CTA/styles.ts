@@ -3,6 +3,7 @@ import { colorPalette } from '@/styles/colorPalette';
 import { ContrastParagraph } from '@/styles/global';
 
 export const CTAContainer = styled.section`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

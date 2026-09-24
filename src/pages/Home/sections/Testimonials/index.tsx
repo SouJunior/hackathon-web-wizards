@@ -34,13 +34,21 @@ function computeCardsPerPage() {
 export function Testimonials() {
   const [page, setPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(computeCardsPerPage);
-  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [playingName, setPlayingName] = useState<string | null>(null);
   const rowRef = useRef<HTMLDivElement>(null);
-  const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({});
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const isNavigatingRef = useRef(false);
   const navigateTimeoutRef = useRef<number | undefined>(undefined);
 
-  const totalPages = Math.ceil(testimonials.length / cardsPerPage);
+  const isMobile = cardsPerPage === 1;
+
+  // Ordem sempre original (vídeo na 2ª posição, igual no desktop). No
+  // mobile, o carrossel só começa já posicionado nele (ver useEffect
+  // abaixo), sem precisar arrastar pra ver.
+  const displayList = testimonials;
+  const videoIndex = testimonials.findIndex((t) => t.type === 'video');
+
+  const totalPages = Math.ceil(displayList.length / cardsPerPage);
 
   useEffect(() => {
     function handleResize() {
@@ -51,10 +59,33 @@ export function Testimonials() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // No mobile os cards ficam centralizados (scroll-snap-align: center); no
+  // desktop, alinhados ao início da fileira de 3.
+  function targetScrollLeft(row: HTMLDivElement, card: HTMLElement) {
+    if (isMobile) {
+      return card.offsetLeft - (row.clientWidth - card.clientWidth) / 2;
+    }
+    return card.offsetLeft;
+  }
+
+  // No mobile, já abre o carrossel posicionado no card de vídeo, sem
+  // animação (a seção ainda nem está visível na tela nesse momento).
+  useEffect(() => {
+    if (!isMobile || videoIndex < 0) return;
+
+    const row = rowRef.current;
+    const card = row?.children[videoIndex] as HTMLElement | undefined;
+    if (!row || !card) return;
+
+    row.scrollLeft = targetScrollLeft(row, card);
+    setPage(Math.floor(videoIndex / cardsPerPage));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile]);
+
   function stopPlaying() {
-    if (playingIndex !== null) {
-      videoRefs.current[playingIndex]?.pause();
-      setPlayingIndex(null);
+    if (playingName !== null) {
+      videoRefs.current[playingName]?.pause();
+      setPlayingName(null);
     }
   }
 
@@ -64,7 +95,7 @@ export function Testimonials() {
 
     const clampedIndex = Math.max(
       0,
-      Math.min(targetIndex, testimonials.length - 1),
+      Math.min(targetIndex, displayList.length - 1),
     );
     const card = row.children[clampedIndex] as HTMLElement;
     if (card) {
@@ -73,7 +104,7 @@ export function Testimonials() {
       navigateTimeoutRef.current = window.setTimeout(() => {
         isNavigatingRef.current = false;
       }, 600);
-      row.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+      row.scrollTo({ left: targetScrollLeft(row, card), behavior: 'smooth' });
     }
     setPage(Math.min(totalPages - 1, Math.floor(clampedIndex / cardsPerPage)));
     stopPlaying();
@@ -121,17 +152,17 @@ export function Testimonials() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [cardsPerPage]);
 
-  function toggleVideo(index: number) {
-    const video = videoRefs.current[index];
+  function toggleVideo(name: string) {
+    const video = videoRefs.current[name];
     if (!video) return;
 
-    if (playingIndex === index) {
+    if (playingName === name) {
       video.pause();
-      setPlayingIndex(null);
+      setPlayingName(null);
     } else {
-      if (playingIndex !== null) videoRefs.current[playingIndex]?.pause();
+      if (playingName !== null) videoRefs.current[playingName]?.pause();
       video.play();
-      setPlayingIndex(index);
+      setPlayingName(name);
     }
   }
 
@@ -150,25 +181,25 @@ export function Testimonials() {
         </NavButton>
 
         <CardsRow ref={rowRef} onScroll={handleScroll}>
-          {testimonials.map((testimonial, index) =>
+          {displayList.map((testimonial) =>
             testimonial.type === 'video' ? (
               <VideoCard
                 key={testimonial.name}
-                onClick={() => toggleVideo(index)}
+                onClick={() => toggleVideo(testimonial.name)}
               >
                 <VideoElement
                   ref={(el) => {
-                    videoRefs.current[index] = el;
+                    videoRefs.current[testimonial.name] = el;
                   }}
                   src={testimonial.videoSrc || undefined}
                   poster={testimonial.poster}
                   playsInline
-                  onEnded={() => setPlayingIndex(null)}
+                  onEnded={() => setPlayingName(null)}
                 />
                 <PlayButton
                   type="button"
                   aria-label="Reproduzir depoimento em vídeo"
-                  $visible={playingIndex !== index}
+                  $visible={playingName !== testimonial.name}
                 >
                   <PlayIcon />
                 </PlayButton>

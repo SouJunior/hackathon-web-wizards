@@ -88,6 +88,7 @@ export const CardsRow = styled.div`
 
   @media (max-width: 431px) {
     gap: 1rem;
+    padding: 20px 5%;
   }
 `;
 
@@ -108,8 +109,8 @@ export const Card = styled.div`
   }
 
   @media (max-width: 431px) {
-    flex-basis: 92%;
-    box-shadow: none;
+    flex-basis: 90%;
+    scroll-snap-align: center;
   }
 `;
 

@@ -118,6 +118,8 @@ O header e o footer não navegam dentro dessa página, eles direcionam de volta 
 - Logo e itens de menu do header/footer → `soujunior.tech` (mesma aba).
 - Botão "Seja um Apoiador!" e a coluna "Faça Parte" do footer → `apoia.se/soujunior` (nova aba).
 - Redes sociais do footer → perfis oficiais da SouJunior (nova aba).
+- Link "Faça Parte" do header → plataforma Stars (`stars.soujunior.tech`, nova aba).
+- Link dentro da 2ª pergunta do FAQ → formulário de apoio não financeiro da V1 (`soujunior.tech/apoiar`, nova aba).
 
 Os destinos exatos de cada link vivem em `src/utils/headerLinks.ts` e `src/utils/footerLinks.ts`, centralizados para facilitar atualização quando o site V1 mudar de estrutura.
 

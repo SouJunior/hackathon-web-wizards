@@ -7,6 +7,7 @@ export const TestimonialsSection = styled.section`
   align-items: center;
   width: 100%;
   padding: 80px 0;
+  scroll-margin-top: 90px;
   background: #f4f5f7;
 
   @media (max-width: 431px) {

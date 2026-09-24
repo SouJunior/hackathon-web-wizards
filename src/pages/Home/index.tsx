@@ -6,6 +6,7 @@ import { Header } from '@/components/header';
 import { CTA } from './sections/CTA';
 import { Results } from './sections/Results';
 import { MarketChallenges } from './sections/MarketChallenges';
+import { BigNumbers } from './sections/BigNumbers';
 
 export function Home() {
   return (
@@ -13,6 +14,7 @@ export function Home() {
       <Header />
       <Hero />
       <MarketChallenges />
+      <BigNumbers />
       <Results />
       <UseSupport />
       <CTA />

@@ -33,7 +33,7 @@ export const BarLink = styled.a`
     justify-content: center;
     gap: 0.5rem;
     position: fixed;
-    bottom: 8px;
+    bottom: 0;
     left: 0;
     width: 100%;
     padding: 1rem;

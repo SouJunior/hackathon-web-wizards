@@ -13,6 +13,7 @@ Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site pr
 - [Vídeo de depoimento (hospedagem externa)](#vídeo-de-depoimento-hospedagem-externa)
 - [Acessibilidade](#acessibilidade)
 - [Padrões do projeto](#padrões-do-projeto)
+- [Equipe](#equipe)
 - [Como contribuir](#como-contribuir)
 
 ## Stack
@@ -151,6 +152,23 @@ Não é uma implementação completa de WCAG, mas o header e o footer seguem o b
 - Arquivo de estilo por component: `style.ts` (styled-components).
 - Link externo (`http...`) sempre com `target="_blank" rel="noopener noreferrer"`; link interno usa `react-router-dom`.
 - Hooks de commit (Husky + lint-staged) rodam Prettier e ESLint automaticamente em cada commit.
+
+## Equipe
+
+Squad Web Wizards, hackathon SouJunior.
+
+| Nome                       | Papel na Squad | LinkedIn                                                                                        |
+| -------------------------- | -------------- | ----------------------------------------------------------------------------------------------- |
+| Douglas Felipe             | Produto (APM)  | [linkedin.com/in/douglas-felipe-da-costa](https://www.linkedin.com/in/douglas-felipe-da-costa/) |
+| Gabriel Bruder             | Produto (APM)  | [linkedin.com/in/gabrielbruder](https://www.linkedin.com/in/gabrielbruder)                      |
+| Lucas Maia                 | Agilista       | [linkedin.com/in/lucas-maia-5bb52b205](https://www.linkedin.com/in/lucas-maia-5bb52b205/)       |
+| Marcos Oliveira da Silva   | Mentor Dev     | [linkedin.com/in/marcosoliveirassilva](https://www.linkedin.com/in/marcosoliveirassilva/)       |
+| Milene Gomes               | Qualidade (QA) | [linkedin.com/in/milene-azevedo-gomes](https://www.linkedin.com/in/milene-azevedo-gomes/)       |
+| Natália Pires              | UX/UI Designer | [linkedin.com/in/nataliapiress](https://www.linkedin.com/in/nataliapiress/)                     |
+| Renan Queiroz Eliziario    | Dev            | [linkedin.com/in/renaneliziario](https://www.linkedin.com/in/renaneliziario/)                   |
+| Thiago Guimarães           | UX/UI Designer | [linkedin.com/in/thiagoguimaraespe](https://www.linkedin.com/in/thiagoguimaraespe/)             |
+| Vania Tavares              | Qualidade (QA) | [linkedin.com/in/vania-dph](https://www.linkedin.com/in/vania-dph/)                             |
+| Vanilo dos Santos Ferreira | Dev            | [linkedin.com/in/vanilo-ferreira](https://www.linkedin.com/in/vanilo-ferreira/)                 |
 
 ## Como contribuir
 

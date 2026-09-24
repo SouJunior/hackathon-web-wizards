@@ -70,6 +70,14 @@ export const SupportButton = styled.a`
   text-decoration: none;
   padding: 0.5rem 1.25rem;
   border-radius: 8px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: ${colorPalette.primaryColor};
+    color: ${colorPalette.contrastColor};
+  }
 
   @media (max-width: 430px) {
     display: none;
@@ -84,8 +92,14 @@ export const MenuButton = styled.button`
   height: 24px;
   padding: 0;
   border: 0;
+  border-radius: 4px;
   background: transparent;
   cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: ${colorPalette.secondaryColor};
+  }
 
   @media (max-width: 430px) {
     display: flex;

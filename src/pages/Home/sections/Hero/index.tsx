@@ -18,7 +18,7 @@ import Design from '@/assets/designHero.svg';
 
 export function Hero() {
   return (
-    <HeroContainer>
+    <HeroContainer id="hero">
       <AreasContent>
         <DesignLeft>
           <img src={Design} alt="" />

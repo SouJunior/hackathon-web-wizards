@@ -8,6 +8,7 @@ import { Results } from './sections/Results';
 import { MarketChallenges } from './sections/MarketChallenges';
 import { Testimonials } from './sections/Testimonials';
 import { BigNumbers } from './sections/BigNumbers';
+import { FloatingSupport } from '@/components/FloatingSupport';
 
 export function Home() {
   return (
@@ -22,6 +23,7 @@ export function Home() {
       <CTA />
       <FAQ />
       <Footer />
+      <FloatingSupport />
     </>
   );
 }

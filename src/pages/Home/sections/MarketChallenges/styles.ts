@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { SectionTitle, SectionParagraph } from '@/styles/global';
 
 export const AreasContainer = styled.section`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

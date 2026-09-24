@@ -15,7 +15,7 @@ import Mascote from '@/assets/CTAMascote.svg';
 
 export function CTA() {
   return (
-    <CTAContainer>
+    <CTAContainer id="cta">
       <CTACard>
         <CTAContent>
           <CTATextContent>

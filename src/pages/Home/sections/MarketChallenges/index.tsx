@@ -30,7 +30,7 @@ const challenges = [
 
 export function MarketChallenges() {
   return (
-    <AreasContainer>
+    <AreasContainer id="market-challenges">
       <AreasContent>
         <AreasTextContent>
           <SectionChallengeTitle>

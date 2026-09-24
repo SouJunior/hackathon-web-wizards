@@ -5,6 +5,7 @@ Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site pr
 ## Sumário
 
 - [Stack](#stack)
+- [Equipe](#equipe)
 - [Pré-requisitos](#pré-requisitos)
 - [Rodando o projeto](#rodando-o-projeto)
 - [Estrutura do projeto](#estrutura-do-projeto)
@@ -13,7 +14,7 @@ Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site pr
 - [Vídeo de depoimento (hospedagem externa)](#vídeo-de-depoimento-hospedagem-externa)
 - [Acessibilidade](#acessibilidade)
 - [Padrões do projeto](#padrões-do-projeto)
-- [Equipe](#equipe)
+
 - [Como contribuir](#como-contribuir)
 
 ## Stack

@@ -36,9 +36,7 @@ export const StyledButton = styled(Link)<StyledButtonProps>`
 
   &:hover {
     background: ${({ $contrast }) =>
-      $contrast ? 'transparent' : colorPalette.contrastColor};
-    color: ${({ $contrast }) =>
-      $contrast ? colorPalette.contrastColor : colorPalette.thirdColor};
+      $contrast ? '#D6E0F5' : 'rgba(255, 255, 255, 0.15)'};
   }
 
   ${({ $hideMobile }) =>

@@ -30,6 +30,16 @@ export const StyledButton = styled(Link)<StyledButtonProps>`
   font-family: 'Funnel Sans', sans-serif;
   letter-spacing: 0.4px;
   margin: 0 6px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: ${({ $contrast }) =>
+      $contrast ? 'transparent' : colorPalette.contrastColor};
+    color: ${({ $contrast }) =>
+      $contrast ? colorPalette.contrastColor : colorPalette.thirdColor};
+  }
 
   ${({ $hideMobile }) =>
     $hideMobile &&

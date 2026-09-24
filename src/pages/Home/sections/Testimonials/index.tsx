@@ -25,16 +25,31 @@ import {
 } from './styles';
 import { testimonials } from './TestimonialsData';
 
-const CARDS_PER_PAGE = 3;
-const totalPages = Math.ceil(testimonials.length / CARDS_PER_PAGE);
+const DESKTOP_CARDS_PER_PAGE = 3;
+
+function computeCardsPerPage() {
+  return window.innerWidth <= 431 ? 1 : DESKTOP_CARDS_PER_PAGE;
+}
 
 export function Testimonials() {
   const [page, setPage] = useState(0);
+  const [cardsPerPage, setCardsPerPage] = useState(computeCardsPerPage);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({});
   const isNavigatingRef = useRef(false);
   const navigateTimeoutRef = useRef<number | undefined>(undefined);
+
+  const totalPages = Math.ceil(testimonials.length / cardsPerPage);
+
+  useEffect(() => {
+    function handleResize() {
+      setCardsPerPage(computeCardsPerPage());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   function stopPlaying() {
     if (playingIndex !== null) {
@@ -43,12 +58,15 @@ export function Testimonials() {
     }
   }
 
-  function goTo(nextPage: number) {
+  function scrollToCard(targetIndex: number) {
     const row = rowRef.current;
     if (!row) return;
 
-    const clamped = Math.max(0, Math.min(nextPage, totalPages - 1));
-    const card = row.children[clamped * CARDS_PER_PAGE] as HTMLElement;
+    const clampedIndex = Math.max(
+      0,
+      Math.min(targetIndex, testimonials.length - 1),
+    );
+    const card = row.children[clampedIndex] as HTMLElement;
     if (card) {
       isNavigatingRef.current = true;
       window.clearTimeout(navigateTimeoutRef.current);
@@ -57,8 +75,22 @@ export function Testimonials() {
       }, 600);
       row.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
     }
-    setPage(clamped);
+    setPage(Math.min(totalPages - 1, Math.floor(clampedIndex / cardsPerPage)));
     stopPlaying();
+  }
+
+  function goTo(nextPage: number) {
+    const clamped = Math.max(0, Math.min(nextPage, totalPages - 1));
+    scrollToCard(clamped * cardsPerPage);
+  }
+
+  function step(direction: 1 | -1) {
+    const row = rowRef.current;
+    if (!row) return;
+
+    const cardWidth = row.children[0]?.clientWidth ?? 1;
+    const currentIndex = Math.round(row.scrollLeft / cardWidth);
+    scrollToCard(currentIndex + direction * cardsPerPage);
   }
 
   function handleScroll() {
@@ -69,7 +101,7 @@ export function Testimonials() {
 
     const cardWidth = row.children[0]?.clientWidth ?? 1;
     const index = Math.round(row.scrollLeft / cardWidth);
-    setPage(Math.min(totalPages - 1, Math.floor(index / CARDS_PER_PAGE)));
+    setPage(Math.min(totalPages - 1, Math.floor(index / cardsPerPage)));
   }
 
   useEffect(() => {
@@ -81,13 +113,13 @@ export function Testimonials() {
         target?.isContentEditable;
       if (isTyping) return;
 
-      if (e.key === 'ArrowRight') goTo(page + 1);
-      if (e.key === 'ArrowLeft') goTo(page - 1);
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
     }
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [page]);
+  }, [cardsPerPage]);
 
   function toggleVideo(index: number) {
     const video = videoRefs.current[index];
@@ -111,7 +143,7 @@ export function Testimonials() {
         <NavButton
           type="button"
           aria-label="Depoimento anterior"
-          onClick={() => goTo(page - 1)}
+          onClick={() => step(-1)}
           disabled={page === 0}
         >
           ‹
@@ -164,7 +196,7 @@ export function Testimonials() {
         <NavButton
           type="button"
           aria-label="Próximo depoimento"
-          onClick={() => goTo(page + 1)}
+          onClick={() => step(1)}
           disabled={page === totalPages - 1}
         >
           ›

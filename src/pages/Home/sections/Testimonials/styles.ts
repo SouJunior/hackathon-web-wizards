@@ -40,7 +40,8 @@ export const CarouselTrack = styled.div`
   padding: 0 4rem;
 
   @media (max-width: 431px) {
-    padding: 0 3rem;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -61,6 +62,12 @@ export const NavButton = styled.button`
   &:disabled {
     opacity: 0.3;
     cursor: default;
+  }
+
+  @media (max-width: 431px) {
+    width: 28px;
+    height: 28px;
+    font-size: 26px;
   }
 `;
 
@@ -101,7 +108,7 @@ export const Card = styled.div`
   }
 
   @media (max-width: 431px) {
-    flex-basis: 85%;
+    flex-basis: 92%;
     box-shadow: none;
   }
 `;

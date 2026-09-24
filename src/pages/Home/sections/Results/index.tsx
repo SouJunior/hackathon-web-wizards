@@ -20,7 +20,9 @@ export function Results() {
   return (
     <ResultsContainer>
       <ResultTextContent>
-        <SectionResultTitle>Onde nosos voluntários chegaram</SectionResultTitle>
+        <SectionResultTitle>
+          Onde nossos voluntários chegaram
+        </SectionResultTitle>
         <SectionResultParagraph>
           Nossos voluntários levam para a carreira o conhecimento e a prática
           que construíram aqui.

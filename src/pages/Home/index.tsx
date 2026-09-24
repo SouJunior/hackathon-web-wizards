@@ -6,6 +6,7 @@ import { Header } from '@/components/header';
 import { CTA } from './sections/CTA';
 import { Results } from './sections/Results';
 import { MarketChallenges } from './sections/MarketChallenges';
+import { Testimonials } from './sections/Testimonials';
 import { BigNumbers } from './sections/BigNumbers';
 
 export function Home() {
@@ -16,6 +17,7 @@ export function Home() {
       <MarketChallenges />
       <BigNumbers />
       <Results />
+      <Testimonials />
       <UseSupport />
       <CTA />
       <FAQ />

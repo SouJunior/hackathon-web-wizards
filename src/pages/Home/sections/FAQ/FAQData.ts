@@ -17,7 +17,7 @@ export const QUESTIONS_AND_ANSWERS: QuestionsAndAnswersItem[] = [
     id: 2,
     question: 'De que outra forma eu posso apoiar a SouJunior?',
     answer:
-      'Além da contribuição financeira, você pode apoiar de outras formas: divulgando a SouJunior nas suas redes (YouTube, LinkedIn e outras), participando como palestrante em nossos eventos ou se candidatando para atuar como voluntário em nossos projetos.',
+      'Além da contribuição financeira, você pode apoiar divulgando a SouJunior, indicando talentos e empresas parceiras ou compartilhando oportunidades que fortaleçam nossa comunidade. Quer apoiar a SouJunior?',
     linkLabel: 'Clique aqui.',
     linkUrl: 'https://www.soujunior.tech/apoiar',
   },

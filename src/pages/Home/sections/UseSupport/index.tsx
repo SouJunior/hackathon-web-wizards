@@ -36,7 +36,7 @@ const services = [
     icon: domainIcon,
     title: 'Domínio dos sites e Extras',
     description:
-      'Manutenção da estrutura necessária para os projetos, incluindo ferramentas.',
+      'Manutenção dos sites e plataformas digitais integradas.',
   },
   {
     icon: eventsIcon,

@@ -6,6 +6,7 @@ import linkedinIcon from '@/assets/social/linkedin.png';
 import twitchIcon from '@/assets/social/twitch.png';
 import xIcon from '@/assets/social/x.png';
 import youtubeIcon from '@/assets/social/youtube.png';
+import whatsIcon from '@/assets/social/whatsapp.png';
 
 export const footerLinksTitle = 'Conheça a SouJunior';
 
@@ -68,6 +69,11 @@ export const socialLinks = [
     icon: twitchIcon,
     to: 'https://www.twitch.tv/soujuniortech',
     label: 'Twitch',
+  },
+  {
+    icon: whatsIcon,
+    to: 'https://chat.whatsapp.com/JJzCMlqMKlw1YOhOk7QB3W',
+    label: 'WhatsApp',
   },
 ];
 

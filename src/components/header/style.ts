@@ -52,8 +52,14 @@ export const NavLink = styled.a`
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 
   &:hover {
+    background: ${colorPalette.secondaryColor};
     color: ${colorPalette.thirdColor};
   }
 `;
@@ -95,10 +101,10 @@ export const MenuButton = styled.button`
   border-radius: 4px;
   background: transparent;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: filter 0.2s ease;
 
   &:hover {
-    background: ${colorPalette.secondaryColor};
+    filter: brightness(0.65);
   }
 
   @media (max-width: 430px) {

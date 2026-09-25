@@ -31,7 +31,7 @@ export function Hero() {
           <HeroCall>DOE R$ 2,00 E FAÇA PARTE DESSA MUDANÇA.</HeroCall>
           <HeroTitle>Como ter experiência sem oportunidade?</HeroTitle>
           <ContrastParagraph>
-            A falta de experiência é a maior obstáculo para 42,8% das pessoas. A
+            A falta de experiência é o maior obstáculo para 42,8% das pessoas. A
             SouJunior elimina essa barreira e oferece vivência real de mercado.
           </ContrastParagraph>
         </HeroTextContent>

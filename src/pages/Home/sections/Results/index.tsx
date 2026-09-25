@@ -24,8 +24,7 @@ export function Results() {
           Onde nossos voluntários chegaram
         </SectionResultTitle>
         <SectionResultParagraph>
-          Nossos voluntários levam para a carreira o conhecimento e a prática
-          que construíram aqui.
+          Nossos voluntários levam a experiência da SouJunior para a carreira.
         </SectionResultParagraph>
       </ResultTextContent>
       <ResultContent>

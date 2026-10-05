@@ -14,7 +14,8 @@ import {
   Quote,
   Stars,
   VideoCard,
-  VideoElement,
+  VideoPoster,
+  VideoFrame,
   VideoInfo,
   VideoName,
   VideoRole,
@@ -36,7 +37,6 @@ export function Testimonials() {
   const [cardsPerPage, setCardsPerPage] = useState(computeCardsPerPage);
   const [playingName, setPlayingName] = useState<string | null>(null);
   const rowRef = useRef<HTMLDivElement>(null);
-  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const isNavigatingRef = useRef(false);
   const navigateTimeoutRef = useRef<number | undefined>(undefined);
 
@@ -82,13 +82,6 @@ export function Testimonials() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
 
-  function stopPlaying() {
-    if (playingName !== null) {
-      videoRefs.current[playingName]?.pause();
-      setPlayingName(null);
-    }
-  }
-
   function scrollToCard(targetIndex: number) {
     const row = rowRef.current;
     if (!row) return;
@@ -107,7 +100,7 @@ export function Testimonials() {
       row.scrollTo({ left: targetScrollLeft(row, card), behavior: 'smooth' });
     }
     setPage(Math.min(totalPages - 1, Math.floor(clampedIndex / cardsPerPage)));
-    stopPlaying();
+    setPlayingName(null);
   }
 
   function goTo(nextPage: number) {
@@ -152,20 +145,6 @@ export function Testimonials() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [cardsPerPage]);
 
-  function toggleVideo(name: string) {
-    const video = videoRefs.current[name];
-    if (!video) return;
-
-    if (playingName === name) {
-      video.pause();
-      setPlayingName(null);
-    } else {
-      if (playingName !== null) videoRefs.current[playingName]?.pause();
-      video.play();
-      setPlayingName(name);
-    }
-  }
-
   return (
     <TestimonialsSection id="depoimentos">
       <Title>Do voluntariado à primeira oportunidade</Title>
@@ -185,24 +164,26 @@ export function Testimonials() {
             testimonial.type === 'video' ? (
               <VideoCard
                 key={testimonial.name}
-                onClick={() => toggleVideo(testimonial.name)}
+                onClick={() => setPlayingName(testimonial.name)}
               >
-                <VideoElement
-                  ref={(el) => {
-                    videoRefs.current[testimonial.name] = el;
-                  }}
-                  src={testimonial.videoSrc || undefined}
-                  poster={testimonial.poster}
-                  playsInline
-                  onEnded={() => setPlayingName(null)}
-                />
-                <PlayButton
-                  type="button"
-                  aria-label="Reproduzir depoimento em vídeo"
-                  $visible={playingName !== testimonial.name}
-                >
-                  <PlayIcon />
-                </PlayButton>
+                {playingName === testimonial.name ? (
+                  <VideoFrame
+                    src={`https://www.youtube-nocookie.com/embed/${testimonial.youtubeId}?autoplay=1&rel=0&playsinline=1`}
+                    title={`Depoimento de ${testimonial.name}`}
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <>
+                    <VideoPoster src={testimonial.poster} alt="" />
+                    <PlayButton
+                      type="button"
+                      aria-label="Reproduzir depoimento em vídeo"
+                    >
+                      <PlayIcon />
+                    </PlayButton>
+                  </>
+                )}
                 <VideoInfo>
                   <VideoName>{testimonial.name}</VideoName>
                   <VideoRole>{testimonial.role}</VideoRole>

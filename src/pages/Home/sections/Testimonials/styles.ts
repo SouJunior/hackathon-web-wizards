@@ -189,12 +189,20 @@ export const VideoCard = styled(Card)`
   cursor: pointer;
 `;
 
-export const VideoElement = styled.video`
+export const VideoPoster = styled.img`
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const VideoFrame = styled.iframe`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 `;
 
 export const VideoInfo = styled.div`
@@ -216,12 +224,11 @@ export const VideoRole = styled.p`
   opacity: 0.85;
 `;
 
-export const PlayButton = styled.button<{ $visible: boolean }>`
+export const PlayButton = styled.button`
   position: absolute;
   top: 78%;
   left: 50%;
-  transform: translate(-50%, -50%)
-    scale(${({ $visible }) => ($visible ? 1 : 0.6)});
+  transform: translate(-50%, -50%);
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -234,11 +241,6 @@ export const PlayButton = styled.button<{ $visible: boolean }>`
   font-size: 20px;
   cursor: pointer;
   z-index: 2;
-  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
-  pointer-events: ${({ $visible }) => ($visible ? 'auto' : 'none')};
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
 `;
 
 export const PlayIcon = styled.span`

@@ -11,7 +11,7 @@ Landing page "Seja um Apoiador" da SouJunior. Página satélite, fora do site pr
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Fluxo da página](#fluxo-da-página)
 - [Links externos (site V1)](#links-externos-site-v1)
-- [Vídeo de depoimento (hospedagem externa)](#vídeo-de-depoimento-hospedagem-externa)
+- [Vídeo de depoimento (YouTube)](#vídeo-de-depoimento-youtube)
 - [Acessibilidade](#acessibilidade)
 - [Padrões do projeto](#padrões-do-projeto)
 
@@ -125,18 +125,26 @@ O header e o footer não navegam dentro dessa página, eles direcionam de volta 
 
 Os destinos exatos de cada link vivem em `src/utils/headerLinks.ts` e `src/utils/footerLinks.ts`, centralizados para facilitar atualização quando o site V1 mudar de estrutura.
 
-## Vídeo de depoimento (hospedagem externa)
+## Vídeo de depoimento (YouTube)
 
-O vídeo do depoimento em vídeo (seção Testimonials) não fica no repositório. O
-arquivo original tinha 118MB (acima do limite de 100MB do GitHub), foi
-comprimido para ~21MB e depois movido para o Supabase Storage, referenciado
-só por URL em `src/pages/Home/sections/Testimonials/TestimonialsData.ts`
-(campo `videoSrc`).
+O depoimento em vídeo (seção Testimonials) é hospedado no YouTube como vídeo
+não listado: não aparece em busca nem no canal, mas funciona para quem tiver o
+link. O ID do vídeo fica em `src/pages/Home/sections/Testimonials/TestimonialsData.ts`
+(campo `youtubeId`).
 
-⚠️ A URL atual é **assinada** (contém um token com expiração em 2028), não é
-um link público permanente. Antes de virar produção de verdade, trocar o
-bucket do Supabase para **público** e atualizar `videoSrc` para a URL sem
-token — assim o link para de depender de renovação futura.
+O arquivo original tinha 118MB, acima do limite de 100MB do GitHub, então foi
+comprimido para ~21MB e não ficou no repositório.
+
+### Histórico de hospedagem
+
+Inicialmente o vídeo ficava no Supabase Storage, referenciado por URL assinada.
+O problema: contas gratuitas do Supabase pausam o projeto após uma semana sem
+atividade, e nesse estado o vídeo parava de carregar, deixando um player
+quebrado na seção de depoimentos. Reativar a conta manualmente não era uma
+solução confiável.
+
+A solução foi publicar o vídeo no YouTube como não listado, que não depende de
+conta pausada e tem streaming otimizado para qualquer dispositivo.
 
 ## Acessibilidade
 

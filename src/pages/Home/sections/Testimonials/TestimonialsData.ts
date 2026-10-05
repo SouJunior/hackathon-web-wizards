@@ -4,9 +4,6 @@ import priscillaPhoto from '@/assets/testimonials/priscilla souza.png';
 import andersonPhoto from '@/assets/testimonials/anderson nunes.png';
 import nathaliaPoster from '@/assets/testimonials/Nathalia Carvalho.png';
 
-const nathaliaVideo =
-  'https://zjxukfxldekqlnwoojbn.supabase.co/storage/v1/object/sign/videos/nathalia-atualizado.mp4?token=eyJraWQiOiI1ZjUyYTc3MS01ODYzLTQ3ODYtOTg1NC03YjM0YzZhYTdjNWYiLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJ2aWRlb3MvbmF0aGFsaWEtYXR1YWxpemFkby5tcDQiLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzkwMjY2MDQ2LCJleHAiOjE4NTMzMzgwNDZ9.xcms3EAzoUgABiJUs6IqG4evyLKMohW2Crn0dP9SCEkLYad4ghzJavlkw9IcvPZgI02criq-3Aix7gWg4uJPuw';
-
 export interface TextTestimonial {
   type: 'text';
   name: string;
@@ -20,7 +17,7 @@ export interface VideoTestimonial {
   type: 'video';
   name: string;
   role: string;
-  videoSrc: string;
+  youtubeId: string;
   poster?: string;
 }
 
@@ -40,7 +37,7 @@ export const testimonials: Testimonial[] = [
     type: 'video',
     name: 'Nathalia Carvalho',
     role: 'UX/UI Designer',
-    videoSrc: nathaliaVideo,
+    youtubeId: '-T5JvXxnVUc',
     poster: nathaliaPoster,
   },
   {
